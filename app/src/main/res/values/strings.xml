@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SafeWard</string>
+
+
+    <string-array name="user_roles">
+        <item>Doctor</item>
+        <item>Nurse</item>
+        <item>Family</item>
+        <item>Security</item>
+    </string-array>
+</resources>
