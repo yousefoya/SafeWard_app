@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FCFAF7"
+            android:fillViewport="true"
+            tools:context=".MainActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="SafeWard"
+                android:textColor="#2D343E"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Secure care, without cameras"
+                android:textColor="#626A73"
+                android:textSize="15sp" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:background="#D8D6E8"
+                android:padding="12dp"
+                android:text="✓  Your connection is protected"
+                android:textColor="#2D343E"
+                android:textSize="14sp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="Welcome back"
+                android:textColor="#2D343E"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Sign in to continue to your secure dashboard."
+                android:textColor="#626A73"
+                android:textSize="15sp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Email address"
+                android:textColor="#2D343E"
+                android:textStyle="bold" />
+
+        <EditText
+                android:id="@+id/emailInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="name@example.com"
+                android:inputType="textEmailAddress"
+                android:minHeight="52dp"
+                android:padding="12dp"
+                android:textColor="#2D343E"
+                android:textColorHint="#858B93"
+                android:backgroundTint="#D8D6E8" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Password"
+                android:textColor="#2D343E"
+                android:textStyle="bold" />
+
+        <EditText
+                android:id="@+id/passwordInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Enter your password"
+                android:inputType="textPassword"
+                android:minHeight="52dp"
+                android:padding="12dp"
+                android:textColor="#2D343E"
+                android:textColorHint="#858B93"
+                android:backgroundTint="#D8D6E8" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Role"
+                android:textColor="#2D343E"
+                android:textStyle="bold" />
+
+        <Spinner
+                android:id="@+id/roleSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="52dp"
+                android:entries="@array/user_roles"
+                android:spinnerMode="dropdown"
+                android:backgroundTint="#D8D6E8" />
+        <Button
+                android:id="@+id/continueButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:backgroundTint="#2D343E"
+                android:minHeight="52dp"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Your health data is private and protected."
+                android:textColor="#626A73"
+                android:textSize="13sp" />
+
+    </LinearLayout>
+</ScrollView>
