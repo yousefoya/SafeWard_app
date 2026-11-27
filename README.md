@@ -59,6 +59,25 @@ SafeWard-Android/
 
 ---
 
+## Roles, Permissions & Authentication (Demo Accounts)
+
+SafeWard enforces **Role-Based Access Control (RBAC)** with **Two-Factor Authentication (2FA)** and encrypted sessions:
+
+1. **Login & Role Verification:** Email and selected role are validated against `app/src/main/assets/mock_data.json`.
+2. **2FA Verification (`OTP`):** Each account requires its 6-digit `mock_otp` code before access is granted.
+3. **Encrypted Session:** After 2FA succeeds, `SessionManager` creates a session token encrypted with **AES-256-GCM** using a key stored in the **Android Keystore** (expires after 15 minutes).
+
+| Role | Name | Email | Password (Week 1 Mock) | 2FA Code (`mock_otp`) | Permissions & Access |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Doctor** | Dr. Tariq Mansour | `tariq@safeward.jo` | Any non-empty password | `482910` | Full clinical view: Ward Dashboard, patient vitals, historical charts, fall alarms & PDF/CSV report export. |
+| **Nurse** | Nurse Sara Haddad | `sara@safeward.jo` | Any non-empty password | `193847` | Live Ward Dashboard, emergency fall alarm response, room/patient vitals monitoring & device checks. |
+| **Family** | Khaled Al-Omari | `khaled@safeward.jo` | Any non-empty password | `750214` | Read-only status & vitals summary for assigned family member, plus fall emergency notifications. |
+| **Security** | Zeina Nasrallah | `zeina@safeward.jo` | Any non-empty password | `619402` | **Security Audit Log** (`ui/security/`): live feed of blocked `Replay`, `Cross-Layer Spoof`, and `Unauthorized Device` events, plus ESP32 TLS verification status & Network Log. |
+
+> **Week 1 Note:** Logging in as **Security** routes directly to the **Security Audit Log** screen. **Doctor**, **Nurse**, and **Family** currently route to the **Network Layer Test** screen until the Ward Dashboard and Patient Profile screens are merged.
+
+---
+
 ## Getting Started (Week 1)
 
 1. Clone this repository and open it in **Android Studio**.
