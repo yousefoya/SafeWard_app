@@ -1,6 +1,6 @@
 {
   "project": "SafeWard",
-  "version": "1.0-mock",
+  "version": "1.1-mock",
   "last_updated": "2026-11-27T12:30:00+03:00",
   "users": [
     {
@@ -63,7 +63,7 @@
       "temperature_c": 36.9,
       "breathing_rpm": 19,
       "timestamp": "2026-11-27T12:29:05+03:00",
-      "nonce": "n_3b7e44d1"
+      "nonce": "n_5d1a77b2"
     },
     {
       "room_id": "103",
@@ -98,6 +98,15 @@
       "rssi_dbm": -52,
       "tls_verified": true,
       "last_seen": "2026-11-27T12:29:52+03:00"
+    },
+    {
+      "device_id": "ESP32_CSI_102",
+      "room_id": "102",
+      "type": "Wi-Fi CSI Node",
+      "status": "ONLINE",
+      "rssi_dbm": -50,
+      "tls_verified": true,
+      "last_seen": "2026-11-27T12:29:57+03:00"
     },
     {
       "device_id": "ESP32_CSI_103",
