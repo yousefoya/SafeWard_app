@@ -2,4 +2,23 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- SafeWard Official Agreed Palette (Ultra-Light & Serene) -->
+    <color name="bg_cloud_cream">#FCFAF7</color>
+    <color name="surface_warm_linen">#EFE7DC</color>
+    <color name="surface_white">#FFFFFF</color>
+
+    <!-- Feature & Data Cards -->
+    <color name="csi_soft_sky_mist">#CFE5F5</color>
+    <color name="vitals_blush_petal">#F7D9E0</color>
+    <color name="security_soft_lavender">#D8D6E8</color>
+
+    <!-- Typography -->
+    <color name="text_soft_charcoal">#2D343E</color>
+    <color name="text_muted_slate">#68707A</color>
+
+    <!-- Emergency & Warning Accents -->
+    <color name="alert_critical_rose">#D96B78</color>
+    <color name="alert_warning_amber">#F5DFA0</color>
+    <color name="status_safe_mint">#C7E6DC</color>
 </resources>

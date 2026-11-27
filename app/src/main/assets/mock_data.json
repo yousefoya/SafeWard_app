@@ -1,0 +1,159 @@
+{
+  "project": "SafeWard",
+  "version": "1.0-mock",
+  "last_updated": "2026-11-27T12:30:00+03:00",
+  "users": [
+    {
+      "user_id": "u_01",
+      "name": "Dr. Tariq Mansour",
+      "role": "Doctor",
+      "email": "tariq@safeward.jo",
+      "two_fa_enabled": true,
+      "mock_otp": "482910"
+    },
+    {
+      "user_id": "u_02",
+      "name": "Nurse Sara Haddad",
+      "role": "Nurse",
+      "email": "sara@safeward.jo",
+      "two_fa_enabled": true,
+      "mock_otp": "193847"
+    },
+    {
+      "user_id": "u_03",
+      "name": "Khaled Al-Omari",
+      "role": "Family",
+      "email": "khaled@safeward.jo",
+      "two_fa_enabled": true,
+      "mock_otp": "750214"
+    },
+    {
+      "user_id": "u_04",
+      "name": "Zeina Nasrallah",
+      "role": "Security",
+      "email": "zeina@safeward.jo",
+      "two_fa_enabled": true,
+      "mock_otp": "619402"
+    }
+  ],
+  "rooms": [
+    {
+      "room_id": "101",
+      "patient_name": "Ahmad Al-Masri",
+      "age": 72,
+      "csi_status": "NORMAL",
+      "fall_detected": false,
+      "fall_confidence": 0.04,
+      "heart_rate_bpm": 74,
+      "spo2_percent": 98,
+      "temperature_c": 36.7,
+      "breathing_rpm": 16,
+      "timestamp": "2026-11-27T12:28:10+03:00",
+      "nonce": "n_9f8a12c4"
+    },
+    {
+      "room_id": "102",
+      "patient_name": "Fatima Al-Zahrani",
+      "age": 68,
+      "csi_status": "MOVEMENT",
+      "fall_detected": false,
+      "fall_confidence": 0.18,
+      "heart_rate_bpm": 84,
+      "spo2_percent": 97,
+      "temperature_c": 36.9,
+      "breathing_rpm": 19,
+      "timestamp": "2026-11-27T12:29:05+03:00",
+      "nonce": "n_3b7e44d1"
+    },
+    {
+      "room_id": "103",
+      "patient_name": "Mahmoud Saleh",
+      "age": 79,
+      "csi_status": "FALL_DETECTED",
+      "fall_detected": true,
+      "fall_confidence": 0.94,
+      "heart_rate_bpm": 112,
+      "spo2_percent": 94,
+      "temperature_c": 37.1,
+      "breathing_rpm": 24,
+      "timestamp": "2026-11-27T12:29:50+03:00",
+      "nonce": "n_7c2d90e8"
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "ESP32_CSI_101",
+      "room_id": "101",
+      "type": "Wi-Fi CSI Node",
+      "status": "ONLINE",
+      "rssi_dbm": -48,
+      "tls_verified": true,
+      "last_seen": "2026-11-27T12:29:55+03:00"
+    },
+    {
+      "device_id": "ESP32_MED_101",
+      "room_id": "101",
+      "type": "MAX30102 + Temp",
+      "status": "ONLINE",
+      "rssi_dbm": -52,
+      "tls_verified": true,
+      "last_seen": "2026-11-27T12:29:52+03:00"
+    },
+    {
+      "device_id": "ESP32_CSI_103",
+      "room_id": "103",
+      "type": "Wi-Fi CSI Node",
+      "status": "ONLINE",
+      "rssi_dbm": -45,
+      "tls_verified": true,
+      "last_seen": "2026-11-27T12:29:58+03:00"
+    }
+  ],
+  "history_logs": [
+    {
+      "event_id": "evt_01",
+      "room_id": "103",
+      "event_type": "FALL_DETECTED",
+      "details": "Sudden CSI variance spike followed by stillness (4.2s)",
+      "heart_rate_bpm": 112,
+      "timestamp": "2026-11-27T12:29:50+03:00"
+    },
+    {
+      "event_id": "evt_02",
+      "room_id": "102",
+      "event_type": "NIGHT_WANDERING",
+      "details": "Continuous walking motion detected",
+      "heart_rate_bpm": 86,
+      "timestamp": "2026-11-27T02:14:22+03:00"
+    }
+  ],
+  "security_logs": [
+    {
+      "log_id": "sec_01",
+      "attack_type": "CROSS_LAYER_SPOOF",
+      "room_id": "101",
+      "source_id": "UNKNOWN_NODE_99",
+      "reason": "Fake fall alert rejected: physical Wi-Fi CSI shows empty/still room",
+      "action_taken": "BLOCKED",
+      "timestamp": "2026-11-27T12:15:03+03:00"
+    },
+    {
+      "log_id": "sec_02",
+      "attack_type": "REPLAY_ATTACK",
+      "room_id": "102",
+      "source_id": "ESP32_CSI_102",
+      "reason": "Duplicate Nonce (n_3b7e44d1) & expired Timestamp detected",
+      "action_taken": "BLOCKED",
+      "timestamp": "2026-11-27T11:48:19+03:00"
+    },
+    {
+      "log_id": "sec_03",
+      "attack_type": "UNAUTHORIZED_DEVICE",
+      "room_id": "103",
+      "source_id": "MAC_AA:BB:CC:11:22:33",
+      "reason": "Invalid TLS client certificate during MQTT handshake",
+      "action_taken": "REJECTED",
+      "timestamp": "2026-11-27T10:05:44+03:00"
+    }
+  ]
+}
