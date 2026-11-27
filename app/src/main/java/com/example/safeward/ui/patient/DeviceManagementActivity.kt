@@ -88,7 +88,9 @@ class DeviceManagementActivity : AppCompatActivity(), TelemetryClient.Listener {
             startActivity(
                 Intent(this, PatientProfileActivity::class.java)
                     .putExtra(PatientProfileActivity.EXTRA_ROOM_ID, device.roomId)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             )
+            finish()
         }
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
@@ -110,7 +112,11 @@ class DeviceManagementActivity : AppCompatActivity(), TelemetryClient.Listener {
 
         findViewById<Button>(R.id.addRoomButton).setOnClickListener { showAddRoomDialog() }
         findViewById<Button>(R.id.patientProfileButton).setOnClickListener {
-            startActivity(Intent(this, PatientProfileActivity::class.java))
+            startActivity(
+                Intent(this, PatientProfileActivity::class.java)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+            finish()
         }
         findViewById<Button>(R.id.backButton).setOnClickListener { finish() }
 

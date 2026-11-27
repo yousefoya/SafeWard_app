@@ -113,7 +113,11 @@ class PatientProfileActivity : AppCompatActivity(), TelemetryClient.Listener {
         findViewById<Button>(R.id.devicesButton).setOnClickListener {
             startActivity(Intent(this, DeviceManagementActivity::class.java))
         }
-        findViewById<Button>(R.id.backButton).setOnClickListener { finish() }
+        // This is the Doctor's home screen, so "Back" here means sign out.
+        findViewById<Button>(R.id.backButton).setOnClickListener {
+            sessionManager.clear()
+            backToLogin()
+        }
 
         roomSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {

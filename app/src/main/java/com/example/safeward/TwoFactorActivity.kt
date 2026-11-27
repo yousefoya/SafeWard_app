@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.safeward.data.MockDataRepository
 import com.example.safeward.network.SessionManager
+import com.example.safeward.ui.patient.PatientProfileActivity
 import com.example.safeward.ui.security.SecurityAuditActivity
 
 class TwoFactorActivity : AppCompatActivity() {
@@ -40,10 +41,12 @@ class TwoFactorActivity : AppCompatActivity() {
                 // 2FA passed => open an encrypted session (Android Keystore, AES-GCM).
                 SessionManager(this).start(user)
                 // Route Security role to Zeina's Security Audit Log; other roles to Network Test until dashboards land.
-                val targetActivity = if (user.role.equals("Security", ignoreCase = true)) {
-                    SecurityAuditActivity::class.java
-                } else {
-                    NetworkTestActivity::class.java
+                // Doctor => Patient Profile (with Devices & Rooms); Security => Audit Log;
+                // other roles => Network Test until their dashboards land.
+                val targetActivity = when {
+                    user.role.equals("Doctor", ignoreCase = true) -> PatientProfileActivity::class.java
+                    user.role.equals("Security", ignoreCase = true) -> SecurityAuditActivity::class.java
+                    else -> NetworkTestActivity::class.java
                 }
                 startActivity(
                     Intent(this, targetActivity)

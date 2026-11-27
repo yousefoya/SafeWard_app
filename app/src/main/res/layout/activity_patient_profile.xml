@@ -58,10 +58,10 @@
                 android:id="@+id/backButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/surface_warm_linen"
-                android:text="Back"
+                android:backgroundTint="@color/alert_critical_rose"
+                android:text="Log out"
                 android:textAllCaps="false"
-                android:textColor="@color/text_soft_charcoal"
+                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 
