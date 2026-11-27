@@ -6,10 +6,12 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.safeward.data.MockDataRepository
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,18 +39,33 @@ class MainActivity : AppCompatActivity() {
             val email = emailInput.text.toString().trim()
             val password = passwordInput.text.toString()
 
-            when {
-                !Patterns.EMAIL_ADDRESS.matcher(email).matches() ->
-                    emailInput.error = "Enter a valid email address"
+            val selectedRole = roleSpinner.selectedItem.toString()
 
-                password.isBlank() ->
-                    passwordInput.error = "Enter your password"
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                emailInput.error = "Enter a valid email address"
+                return@setOnClickListener
+            }
+            if (password.isBlank()) {
+                passwordInput.error = "Enter your password"
+                return@setOnClickListener
+            }
+
+            // Week 1: authenticate against the shared mock_data.json contract.
+            val user = MockDataRepository.findByEmail(this, email)
+            when {
+                user == null ->
+                    emailInput.error = "No SafeWard account found for this email"
+
+                !user.role.equals(selectedRole, ignoreCase = true) ->
+                    Toast.makeText(
+                        this,
+                        "This account is not registered as $selectedRole",
+                        Toast.LENGTH_LONG
+                    ).show()
 
                 else -> {
-                    val role = roleSpinner.selectedItem.toString()
                     val intent = Intent(this, TwoFactorActivity::class.java).apply {
-                        putExtra(TwoFactorActivity.EXTRA_EMAIL, email)
-                        putExtra(TwoFactorActivity.EXTRA_ROLE, role)
+                        putExtra(TwoFactorActivity.EXTRA_USER_ID, user.userId)
                     }
                     startActivity(intent)
                 }

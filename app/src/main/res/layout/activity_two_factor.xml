@@ -78,11 +78,12 @@
                 android:textSize="16sp" />
 
         <TextView
+                android:id="@+id/demoHintText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="Demo only: use code 123456"
+                android:text="Demo only"
                 android:textColor="#626A73"
                 android:textSize="14sp" />
 
