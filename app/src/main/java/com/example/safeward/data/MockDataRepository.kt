@@ -21,6 +21,9 @@ object MockDataRepository {
     @Volatile
     private var cached: MockData? = null
 
+    private val addedRooms = mutableListOf<RoomTelemetry>()
+    private val addedDevices = mutableListOf<Device>()
+
     fun load(context: Context): MockData {
         cached?.let { return it }
         val text = context.applicationContext.assets.open(FILE_NAME)
@@ -30,6 +33,30 @@ object MockDataRepository {
     }
 
     fun getUsers(context: Context): List<User> = load(context).users
+
+    fun getRooms(context: Context): List<RoomTelemetry> = synchronized(addedRooms) {
+        load(context).rooms + addedRooms
+    }
+
+    fun getDevices(context: Context): List<Device> = synchronized(addedDevices) {
+        load(context).devices + addedDevices
+    }
+
+    fun getHistoryForRoom(context: Context, roomId: String): List<HistoryLog> =
+        load(context).historyLogs.filter { it.roomId == roomId }
+
+    fun addRoom(room: RoomTelemetry, newDevices: List<Device>) {
+        synchronized(addedRooms) {
+            addedRooms.removeAll { it.roomId == room.roomId }
+            addedRooms.add(room)
+        }
+        synchronized(addedDevices) {
+            newDevices.forEach { d ->
+                addedDevices.removeAll { it.deviceId == d.deviceId }
+                addedDevices.add(d)
+            }
+        }
+    }
 
     fun findByEmail(context: Context, email: String): User? =
         getUsers(context).firstOrNull { it.email.equals(email.trim(), ignoreCase = true) }

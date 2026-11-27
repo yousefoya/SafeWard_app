@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room Number"
+        android:textColor="@color/text_muted_slate"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/inputRoomId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="e.g. 104"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient Full Name"
+        android:textColor="@color/text_muted_slate"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/inputPatientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="e.g. Omar Al-Khatib"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Patient Age"
+        android:textColor="@color/text_muted_slate"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/inputPatientAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="e.g. 75"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ESP32 Wi-Fi CSI Node ID"
+        android:textColor="@color/text_muted_slate"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/inputCsiDeviceId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="e.g. ESP32_CSI_104"
+        android:inputType="text" />
+
+    <CheckBox
+        android:id="@+id/checkboxMedSensor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Pair MAX30102 + Temp Sensor Node"
+        android:textColor="@color/text_soft_charcoal"
+        android:textSize="13sp" />
+</LinearLayout>
